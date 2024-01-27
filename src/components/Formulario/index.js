@@ -17,13 +17,18 @@ export const Formulario = () => {
         'Inovação e Gestão'
     ]
 
-  return (
+    const aoSalvar = (events) => {
+        events.preventDefault()
+        return alert("Ao salvar");
+    }
+
+    return (
       <section className="formulario">
-          <form>
-              <CampoTexto label="nome" placeholder="Digite seu nome" type="text"/>
-              <CampoTexto label="cargo" placeholder="Digite seu cargo" type="text"/>
-              <CampoTexto label="imagem" placeholder="Digite o URL da sua imagem" type="url"/>
-              <ListaSuspensa label="times" itens={times} />
+          <form onSubmit={aoSalvar}>
+              <CampoTexto label="nome" placeholder="Digite seu nome" type="text" required={true}/>
+              <CampoTexto label="cargo" placeholder="Digite seu cargo" type="text" required={false}/>
+              <CampoTexto label="imagem" placeholder="Digite o URL da sua imagem" type="url" disable={true}/>
+              <ListaSuspensa label="times" itens={times} required={true}/>
               <Botao>
                   criar card
               </Botao>
