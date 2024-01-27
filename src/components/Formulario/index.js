@@ -1,5 +1,6 @@
 import {CampoTexto} from "../CampoTexto";
 import {ListaSuspensa} from "../ListaSuspensa";
+import {Botao} from "../Botao";
 
 import ('./style.css')
 
@@ -23,6 +24,9 @@ export const Formulario = () => {
               <CampoTexto label="cargo" placeholder="Digite seu cargo" type="text"/>
               <CampoTexto label="imagem" placeholder="Digite o URL da sua imagem" type="url"/>
               <ListaSuspensa label="times" itens={times} />
+              <Botao>
+                  criar card
+              </Botao>
           </form>
       </section>
   )
