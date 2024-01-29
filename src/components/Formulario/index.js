@@ -1,11 +1,19 @@
 import {CampoTexto} from "../CampoTexto";
 import {ListaSuspensa} from "../ListaSuspensa";
 import {Botao} from "../Botao";
+import {useState} from "react";
 
 import ('./style.css')
 
 
-export const Formulario = () => {
+export const Formulario = (props) => {
+
+
+    const [nome, setNome] = useState('')
+    const [cargo, setCargo] = useState('')
+    const [imagem, setImagem] = useState('')
+    const [time, setTime] = useState('')
+
 
     const times = [
         'Programação',
@@ -17,18 +25,46 @@ export const Formulario = () => {
         'Inovação e Gestão'
     ]
 
-    const aoSalvar = (events) => {
+    const onSavedWorker = (events) => {
         events.preventDefault()
-        return alert("Ao salvar");
+        props.onSaved({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
 
     return (
       <section className="formulario">
-          <form onSubmit={aoSalvar}>
-              <CampoTexto label="nome" placeholder="Digite seu nome" type="text" required={true}/>
-              <CampoTexto label="cargo" placeholder="Digite seu cargo" type="text" required={false}/>
-              <CampoTexto label="imagem" placeholder="Digite o URL da sua imagem" type="url" disable={true}/>
-              <ListaSuspensa label="times" itens={times} required={true}/>
+          <form onSubmit={onSavedWorker}>
+              <CampoTexto
+                  label="nome"
+                  placeholder="Digite seu nome"
+                  value={nome}
+                  onChanced={value => setNome(value)}
+                  type="text"
+                  required={true}/>
+              <CampoTexto
+                  label="cargo"
+                  placeholder="Digite seu cargo"
+                  type="text"
+                  value={cargo}
+                  onChanced={value => setCargo(value)}
+                  required={false}/>
+              <CampoTexto
+                  label="imagem"
+                  placeholder="Digite o URL da sua imagem"
+                  value={imagem}
+                  onChanced={value => setImagem(value)}
+                  type="url"
+                  disable={true}/>
+              <ListaSuspensa
+                  label="times"
+                  value={time}
+                  onChanced={value => setTime(value)}
+                  itens={times}
+                  required={true}/>
               <Botao>
                   criar card
               </Botao>

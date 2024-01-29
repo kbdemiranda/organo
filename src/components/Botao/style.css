@@ -1,4 +1,5 @@
 .botao {
+    display: flex;
     text-transform: uppercase;
     background-color: #6278f7;
     border-radius: 10px;
