@@ -14,17 +14,6 @@ export const Formulario = (props) => {
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
 
-
-    const times = [
-        'Programação',
-        'Front-end',
-        'Data Science',
-        'DevOps',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
-
     const onSavedWorker = (events) => {
         events.preventDefault()
         props.onSaved({
@@ -33,6 +22,10 @@ export const Formulario = (props) => {
             imagem,
             time
         })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
@@ -58,12 +51,12 @@ export const Formulario = (props) => {
                   value={imagem}
                   onChanced={value => setImagem(value)}
                   type="url"
-                  disable={true}/>
+                  disable={false}/>
               <ListaSuspensa
                   label="times"
                   value={time}
                   onChanced={value => setTime(value)}
-                  itens={times}
+                  itens={props.times}
                   required={true}/>
               <Botao>
                   criar card
