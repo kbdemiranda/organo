@@ -3,6 +3,7 @@ import {Banner} from "./components/Banner";
 import {Formulario} from "./components/Formulario";
 import {useState} from "react";
 import {Time} from "./components/Time";
+import {Rodape} from "./components/Rodape";
 
 function App() {
 
@@ -51,18 +52,21 @@ function App() {
         setColaboradores([...colaboradores, colaborador])
     }
 
+    function deletarColaborador() {
+        console.log('deletando colaborador');
+    }
+
     return (
         <div className="App">
-            <Banner />
+            <Banner/>
             <Formulario times={times.map(time => time.nome)} onSaved={colaborador => onAddNewWorker(colaborador)}/>
-
-            {times.map(time => <Time
-                key={time.nome}
-                nome={time.nome}
-                corPrimaria={time.corPrimaria}
-                corSecundaria={time.corSecundaria}
-                colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-            />)}
+            <section className="times">
+                <h1>Minha organização</h1>
+                {times.map((time, indice) => <Time key={indice} time={time}
+                                                   colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+                                                   aoDeletar={deletarColaborador}/>)}
+            </section>
+            <Rodape />
 
         </div>
     );
