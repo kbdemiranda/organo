@@ -1,6 +1,26 @@
 .time {
     text-align: center;
     padding: 32px;
+    background-blend-mode: multiply;
+    position: relative
+}
+
+.input-color-container {
+    position: relative;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border: solid 2px #ddd;
+    border-radius: 40px;
+}
+
+.input-cor {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 56px;
+    height: 56px;
+    border: none;
 }
 
 .time h3 {
