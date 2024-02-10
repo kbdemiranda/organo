@@ -1,23 +1,9 @@
 import ('./style.css')
 
-export const CampoTexto = (props) => {
+export const CampoTexto = ({ type = 'text', label, placeholder, valor, onChanced, obrigatorio = false }) => {
 
-    const disable = props.disable != null ? props.disable : false;
-
-    const onChanged = (evento) => {
-        props.onChanced(evento.target.value)
-    }
-
-    return (
-        <div className="campo-texto">
-            <label htmlFor={props.label}>{props.label}</label>
-            <input id={props.label}
-                   value={props.value}
-                   type={props.type}
-                   placeholder={props.placeholder}
-                   required={props.required}
-                   onChange={onChanged}
-                   disabled={disable}/>
-        </div>
-    )
+    return (<div className={`campo campo-${type}`}>
+        <label>{label}</label>
+        <input type={type} value={valor} onChange={evento => onChanced(evento.target.value)} required={obrigatorio} placeholder={placeholder}/>
+    </div>)
 }
